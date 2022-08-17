@@ -14,7 +14,7 @@ class ResultViewModel{
     
     
     func animationBakcgroundColor(red: CGFloat, green: CGFloat, blue: CGFloat,vc: UIViewController){
-        UIView.animate(withDuration: 1.0, delay: 0.0,  animations: {
+        UIView.animate(withDuration: 1.5, delay: 0.0,  animations: {
             vc.view.backgroundColor = UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
         }, completion:nil)
     }

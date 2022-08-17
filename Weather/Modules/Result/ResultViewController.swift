@@ -46,9 +46,9 @@ class ResultViewController: UIViewController {
                     self.cityName = address
                 })
             } else {
-                lat = 41.850029
-                lon = -87.650047
-                cityName = "Chicago"
+                lat = 48.8588897
+                lon = 2.3200410217200766
+                cityName = "Paris"
             }
         }
         
@@ -110,7 +110,7 @@ class ResultViewController: UIViewController {
         //green color
         viewModel.animationBakcgroundColor(red: 158, green: 188, blue: 151, vc:self) :
         //blue color
-        viewModel.animationBakcgroundColor(red: 58, green: 180, blue: 151, vc:self)
+        viewModel.animationBakcgroundColor(red: 58, green: 142, blue: 186, vc:self)
         
     }
     

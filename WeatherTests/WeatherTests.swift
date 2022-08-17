@@ -6,30 +6,69 @@
 //
 
 import XCTest
+import Combine
+@testable import Weather
 
 class WeatherTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    let weatherFetcher = WeatherFetcher()
+    let resultVM = ResultViewModel()
+    let findVM = FindViewModel()
+    
+    private var cancellables: Set<AnyCancellable>!
+
+    
+    override func setUp() {
+           super.setUp()
+           cancellables = []
+       }
+   
+
+    func testCurrentWeather()  {
+      
+        let expectation = XCTestExpectation(description: "Download some data")
+        
+        weatherFetcher.currentWeatherForecast(lon: 35.0, lat: 35.0)
+            .sink (receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(_):
+                    break
+                }
+                expectation.fulfill()
+                
+            }, receiveValue: {
+                res in
+                XCTAssertNotNil(res, "data was downloaded.")
+                
+            }).store(in: &cancellables)
+            
+            wait(for: [expectation], timeout: 10.0)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testSearchCity()  {
+      
+        let expectation = XCTestExpectation(description: "Download some data")
+        
+        weatherFetcher.SearchCity(forCity: "Paris")
+            .sink (receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(_):
+                    break
+                }
+                expectation.fulfill()
+                
+            }, receiveValue: {
+                res in
+                XCTAssertNotNil(res, "data was downloaded.")
+                
+            }).store(in: &cancellables)
+            
+            wait(for: [expectation], timeout: 10.0)
     }
 
 }

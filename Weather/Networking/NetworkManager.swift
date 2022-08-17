@@ -16,7 +16,7 @@ import Combine
 //MARK: Protocol
 protocol WeatherFetcherProtocol {
    
-    func currentWeatherForecast(forCity city: String) -> AnyPublisher<[SearchResultResponse],NetworkError>
+    func SearchCity(forCity city: String) -> AnyPublisher<[SearchResultResponse],NetworkError>
     
     func currentWeatherForecast(lon: Double, lat: Double) -> AnyPublisher<WeatherResponse,NetworkError>
 }
@@ -35,7 +35,7 @@ extension WeatherFetcher: WeatherFetcherProtocol{
     
     
   
-    func currentWeatherForecast(forCity city: String) -> AnyPublisher<[SearchResultResponse], NetworkError> {
+    func SearchCity(forCity city: String) -> AnyPublisher<[SearchResultResponse], NetworkError> {
         
         return request(with: OpenWeatherAPI.searchText(withCity: city))
     }

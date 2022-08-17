@@ -30,7 +30,7 @@ class FindViewModel{
     
     func weatherFetchData(for city: String){
         
-        weatherFetcher.currentWeatherForecast(forCity: searchQuery)
+        weatherFetcher.SearchCity(forCity: searchQuery)
             .sink(receiveCompletion: { (completion) in
                 switch completion{
                 

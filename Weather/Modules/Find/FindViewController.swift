@@ -58,29 +58,6 @@ class FindViewController: UIViewController {
         tableView.reloadData()
         
     }
-    
-//    func getWeather(lon: String, lat: String){
-//
-//        weatherFetcher
-//            .currentWeatherForecast(lon: lon, lat: lat)
-//            .sink(receiveCompletion: { completion in
-//                switch completion{
-//
-//                case .finished:
-//                    print("finished")
-//                    break
-//                case .failure(let error):
-//
-//                  print(error)
-//                self.weatherArray = []
-//                }
-//            }, receiveValue: { weather in
-//
-//                self.weather = weather.main
-//            })
-//            .store(in: &weatherSubscribers)
-//
-//    }
 
 }
 
